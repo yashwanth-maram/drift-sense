@@ -1,0 +1,16 @@
+# Generated data — regenerable from the manifest, not committed
+data/
+data_*/
+out_*/
+
+# Metrics output
+metrics_*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# NOTE: figures/ is deliberately NOT ignored.
+# docs/FAILURES.md embeds ../figures/failure_00049.png and it must
+# render on GitHub.
