@@ -62,6 +62,10 @@ Two failures in a hundred. Both are analysed below.
 
 ## 2.1 Errors are lattice multiples, not near-misses
 
+<div align="center">
+<img src="../figures/03_error_dist.png" width="700">
+</div>
+
 The error distribution is **bimodal**, and sharply so.
 
 | Error | Count |
@@ -95,6 +99,10 @@ That is the root cause, and it is a property of the **data**, not of the
 algorithm: a crop from a mat interior contains no aperiodic feature, so
 nothing distinguishes it from the same crop displaced by whole periods.
 
+<div align="center">
+<img src="../figures/02_conditions.png" width="700">
+</div>
+
 ## 2.3 Why the shipped method largely solves it
 
 The reference is cropped from the die at an integer nanometre position
@@ -115,6 +123,10 @@ restores it. Measured on the same 100 pairs:
 |:--|--:|--:|
 | Plain ZNCC | −0.0393 | 40 / 100 |
 | Max over resamplings | **+0.0155** | **74 / 100** |
+
+<div align="center">
+<img src="../figures/04_margin.png" width="820">
+</div>
 
 The margin between the true site and its best competitor **changes sign**.
 
@@ -176,6 +188,10 @@ Under plain matching that is an **11× spread**, known in advance. The
 shipped method largely closes it, and the predictor still identifies the
 residual risk.
 
+<div align="center">
+<img src="../figures/05_confidence.png" width="880">
+</div>
+
 The score is also calibrated end to end:
 
 | | |
@@ -201,6 +217,10 @@ published levels**. Measured across our own noise tiers, DRAM, n = 40 each:
 | high | 68.3 % | 0.576 | 100 % | 88 % | 15 % |
 | severe | 51.7 % | 0.308 | 96 % | 53 % | 0 % |
 | extreme | 17.5 % | 0.149 | 47 % | 0 % | 0 % |
+
+<div align="center">
+<img src="../figures/06_noise.png" width="700">
+</div>
 
 Two things are worth reading from this.
 

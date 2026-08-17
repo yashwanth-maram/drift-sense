@@ -60,8 +60,8 @@ real die carries sub-arrays built at different ground rules, and a search
 image containing only one pitch would understate the difficulty of the
 localisation problem.
 
-**Sources** — [\[1\]](#ref1) IRDS *More Moore*, DRAM half-pitch tables ·
-[\[2\]](#ref2) IRDS *Metrology*, memory ground rules
+**Sources** — **[1]** IRDS *More Moore*, DRAM half-pitch tables ·
+**[2]** IRDS *Metrology*, memory ground rules
 
 ---
 
@@ -81,7 +81,7 @@ roadmap tracks per node, and together they set the visual period of a
 FinFET array in plan view. Fin width at roughly 0.35 of fin pitch and gate
 width at roughly 0.34 of CPP follow published aspect ratios.
 
-**Sources** — [\[1\]](#ref1) IRDS *More Moore*, logic ground rules and
+**Sources** — **[1]** IRDS *More Moore*, logic ground rules and
 critical dimensions 2022–2037
 
 ---
@@ -110,13 +110,13 @@ one.
 The folded array architecture is described in the patent literature in
 exactly these terms: multiple array cores separated by **strips** of sense
 amplifiers and either row-decode blocks or word-line stitching regions.
-[\[15\]](#ref15) Each sense amplifier is roughly two orders of magnitude
+**[15]** Each sense amplifier is roughly two orders of magnitude
 larger than a single cell, which is why it cannot sit inside the array and
-must occupy a strip of its own. [\[16\]](#ref16)
+must occupy a strip of its own. **[16]**
 
-**Sources** — [\[15\]](#ref15) Micron, US 6,504,255 — array cores separated
-by sense-amplifier strips · [\[16\]](#ref16) Seshadri & Mutlu — subarray and
-sense-amplifier area · [\[1\]](#ref1) IRDS *More Moore*
+**Sources** — **[15]** Micron, US 6,504,255 — array cores separated
+by sense-amplifier strips · **[16]** Seshadri & Mutlu — subarray and
+sense-amplifier area · **[1]** IRDS *More Moore*
 
 ---
 
@@ -134,7 +134,7 @@ standard deviation of a few nanometres and — critically — the fluctuation
 is **spatially correlated** over tens of nanometres rather than being white
 noise. The literature characterises this through the power spectral
 density, which is flat below `1/(2πξ)` and falls as `1/f²` above it, where
-`ξ` is the correlation length. [\[3\]](#ref3) [\[5\]](#ref5)
+`ξ` is the correlation length. **[3]** **[5]**
 
 Roughness is therefore generated as smoothed Gaussian noise along each
 line, with the smoothing kernel setting `ξ`. White noise would be
@@ -144,8 +144,8 @@ physically wrong and visually obvious.
 > line-edge roughness entirely. Perfectly straight edges are the single
 > most recognisable tell of a synthetic SEM image.
 
-**Sources** — [\[3\]](#ref3) Constantoudis *et al.* (2004) ·
-[\[4\]](#ref4) Cutler *et al.* (2021) · [\[5\]](#ref5) Mack, *Measuring
+**Sources** — **[3]** Constantoudis *et al.* (2004) ·
+**[4]** Cutler *et al.* (2021) · **[5]** Mack, *Measuring
 Line Edge Roughness*
 
 ---
@@ -165,17 +165,17 @@ and a uniform width offset respectively.
 Corner rounding is one of the geometric parameters that model-based
 CD-SEM libraries explicitly sweep, alongside sidewall angle and foot
 rounding, precisely because it changes the recorded line-scan profile.
-[\[11\]](#ref11)
+**[11]**
 
 The bias between drawn and printed dimension is characterised and
 compensated by biasing the mask — deliberately drawing chrome wider or
 narrower than the intended resist width — and the same treatment covers
 line-end foreshortening and corner rounding from diffraction.
-[\[17\]](#ref17)
+**[17]**
 
-**Sources** — [\[17\]](#ref17) Mack, *Optical Proximity Effects* ·
-[\[11\]](#ref11) Li *et al.* (2013), foot and corner rounding in CD-SEM
-image modelling · [\[2\]](#ref2) IRDS *Metrology*, CD control
+**Sources** — **[17]** Mack, *Optical Proximity Effects* ·
+**[11]** Li *et al.* (2013), foot and corner rounding in CD-SEM
+image modelling · **[2]** IRDS *Metrology*, CD control
 
 ---
 
@@ -191,15 +191,15 @@ capillary forces during drying. Tanaka's analysis balances the Laplace
 pressure of the receding meniscus against the elastic restoring force of
 the feature, and finds the tendency to collapse rising as the **cube** of
 the line aspect ratio, with narrower spaces increasing the capillary force.
-[\[6\]](#ref6) [\[7\]](#ref7) Contacts are also occasionally absent.
+**[6]** **[7]** Contacts are also occasionally absent.
 
 These are properties of the **device**, so they are applied once to the
 shared canvas and appear identically in both captures — unlike imaging
 artifacts, which are applied per image because the two images are separate
 exposures.
 
-**Sources** — [\[6\]](#ref6) Tanaka, Morigami & Atoda (1993) ·
-[\[7\]](#ref7) Mack, *Pattern Collapse*
+**Sources** — **[6]** Tanaka, Morigami & Atoda (1993) ·
+**[7]** Mack, *Pattern Collapse*
 
 ---
 
@@ -213,14 +213,14 @@ exposures.
 
 The electron probe has finite diameter, so the recorded image is the
 specimen convolved with a roughly Gaussian spot whose width is set by the
-probe-forming optics and the beam current. [\[8\]](#ref8)
+probe-forming optics and the beam current. **[8]**
 
 There is one physical beam, so the same PSF is applied to the shared canvas
 **before** either capture diverges. That single modelling decision is why
 the reference reduced by ten carries exactly the blur present in the search
 image, and it is the basis of the template construction in `localize.py`.
 
-**Sources** — [\[8\]](#ref8) Goldstein *et al.*, ch. 2 — probe size,
+**Sources** — **[8]** Goldstein *et al.*, ch. 2 — probe size,
 resolution and image formation
 
 ---
@@ -236,7 +236,7 @@ Secondary-electron yield rises with local surface tilt roughly as
 `1/cos θ`, because a tilted surface places more of the interaction volume
 within the shallow SE escape depth. Steep sidewalls therefore emit more
 electrons than flat tops and appear bright — the characteristic edge
-signature that makes an SEM image recognisable. [\[8\]](#ref8)
+signature that makes an SEM image recognisable. **[8]**
 
 Implemented as a gradient-magnitude term softened to the escape depth of
 secondary electrons.
@@ -246,11 +246,11 @@ secondary electrons.
 
 Monte Carlo transport simulation reproduces this edge signal directly from
 electron scattering physics, and is the basis of model-based CD metrology
-libraries. [\[10\]](#ref10) [\[11\]](#ref11)
+libraries. **[10]** **[11]**
 
-**Sources** — [\[8\]](#ref8) Goldstein *et al.*, ch. 2 — SE yield and its
-dependence on surface tilt · [\[10\]](#ref10) Villarrubia, Ritchie & Lowney
-(2007) · [\[11\]](#ref11) Li *et al.* (2013)
+**Sources** — **[8]** Goldstein *et al.*, ch. 2 — SE yield and its
+dependence on surface tilt · **[10]** Villarrubia, Ritchie & Lowney
+(2007) · **[11]** Li *et al.* (2013)
 
 ---
 
@@ -267,7 +267,7 @@ Var(y) = (255/dose)·μ  +  σ_det²  +  σ_spk²·μ²
 ```
 
 Electron arrival is a Poisson process, so image variance is proportional to
-signal and inversely proportional to dose. [\[8\]](#ref8) The survey image
+signal and inversely proportional to dose. **[8]** The survey image
 is acquired at lower dose than the reference — faster scan, wider field —
 which is why the problem statement warns that the search image will be
 noisier in the test data.
@@ -275,8 +275,8 @@ noisier in the test data.
 Both images receive **independent** draws, as explicitly mandated: they are
 two separate physical captures, not two views of one exposure.
 
-**Sources** — [\[8\]](#ref8) Goldstein *et al.*, ch. 4 — electron counting
-statistics and the dose–SNR relationship · [\[9\]](#ref9) Orji *et al.*
+**Sources** — **[8]** Goldstein *et al.*, ch. 4 — electron counting
+statistics and the dose–SNR relationship · **[9]** Orji *et al.*
 (2018)
 
 ---
@@ -290,9 +290,9 @@ statistics and the dose–SNR relationship · [\[9\]](#ref9) Orji *et al.*
 
 Signal-independent additive noise contributed by the Everhart–Thornley
 detector chain — scintillator, light guide, photomultiplier and
-preamplifier — present regardless of electron count. [\[8\]](#ref8)
+preamplifier — present regardless of electron count. **[8]**
 
-**Sources** — [\[8\]](#ref8) Goldstein *et al.*, ch. 2 — detector
+**Sources** — **[8]** Goldstein *et al.*, ch. 2 — detector
 characteristics
 
 ---
@@ -311,9 +311,9 @@ rather than affine.
 The general treatment of signal-dependent imaging noise separates a
 signal-proportional component from a stationary additive one, and fits both
 from a single image — the same decomposition used by the blind noise
-estimator in this project. [\[14\]](#ref14)
+estimator in this project. **[14]**
 
-**Sources** — [\[14\]](#ref14) Foi *et al.* (2008) · [\[8\]](#ref8)
+**Sources** — **[14]** Foi *et al.* (2008) · **[8]**
 Goldstein *et al.*, ch. 4 — signal and detector contributions
 
 ---
@@ -333,7 +333,7 @@ thermal expansion, mechanical creep and stray fields. Because the image is
 rastered line by line, that drift appears not as a uniform shift but as a
 **progressive lateral shear**, with additional random per-line jitter from
 scan-generator noise and vibration. Scan linearity and drift are recognised
-metrology challenges in dimensional SEM. [\[2\]](#ref2) [\[9\]](#ref9)
+metrology challenges in dimensional SEM. **[2]** **[9]**
 
 > This is the physical effect the problem is named after.
 
@@ -341,10 +341,10 @@ Drift distortion is significant enough to render SEM images unusable for
 metrology at sub-nanometre accuracy, and correcting it is an active area:
 one established approach composes many rapidly acquired frames after
 aligning them, which also measures the instrument's drift as a
-by-product. [\[12\]](#ref12)
+by-product. **[12]**
 
-**Sources** — [\[2\]](#ref2) IRDS *Metrology* · [\[9\]](#ref9) Orji
-*et al.* (2018) · [\[12\]](#ref12) Cizmar, Vladár & Postek (2011)
+**Sources** — **[2]** IRDS *Metrology* · **[9]** Orji
+*et al.* (2018) · **[12]** Cizmar, Vladár & Postek (2011)
 
 ---
 
@@ -357,15 +357,15 @@ by-product. [\[12\]](#ref12)
 
 Charge accumulating on insulating layers deflects the incident beam and
 shifts the local secondary-electron yield, producing bright horizontal
-streaks that decay along the scan direction. [\[8\]](#ref8)
+streaks that decay along the scan direction. **[8]**
 
 The secondary-electron yield of an irradiated insulator evolves as charge
 accumulates, and the sign of that charging flips at the crossover energies
 where yield passes through unity — which is why streak intensity depends on
-both the material and the landing energy. [\[18\]](#ref18)
+both the material and the landing energy. **[18]**
 
-**Sources** — [\[8\]](#ref8) Goldstein *et al.*, ch. 5 — specimen charging ·
-[\[18\]](#ref18) Cazaux (1999) — SE emission from irradiated insulators
+**Sources** — **[8]** Goldstein *et al.*, ch. 5 — specimen charging ·
+**[18]** Cazaux (1999) — SE emission from irradiated insulators
 
 ---
 
@@ -381,14 +381,14 @@ both the material and the landing energy. [\[18\]](#ref18)
 Collection efficiency falls toward the field edge; scan-coil non-linearity
 produces radial geometric distortion; residual astigmatism makes the probe
 elliptical rather than circular; and detector response to electron flux is
-not exactly linear. [\[8\]](#ref8)
+not exactly linear. **[8]**
 
 Spatial distortion fields in SEM have been measured and modelled directly,
 showing systematic displacement varying across the field of view.
-[\[13\]](#ref13)
+**[13]**
 
-**Sources** — [\[8\]](#ref8) Goldstein *et al.*, ch. 2 — aberrations and
-astigmatism · [\[13\]](#ref13) Jin *et al.* (2015) — spatial distortion
+**Sources** — **[8]** Goldstein *et al.*, ch. 2 — aberrations and
+astigmatism · **[13]** Jin *et al.* (2015) — spatial distortion
 fields
 
 ---
@@ -435,110 +435,30 @@ by sample, which is what makes a paired ablation statistically efficient.
 
 # References
 
-<a id="ref1"></a>
-**[1]** IEEE. *International Roadmap for Devices and Systems (IRDS™),
-2023 Edition — More Moore.* IEEE, 2023.
-→ <https://irds.ieee.org/editions/2023>
+*Every link verified against its publisher.*
 
-<a id="ref2"></a>
-**[2]** E. Mansfield, B. Barnes, R. J. Kline, A. E. Vladár, Y. S. Obeng,
-A. Davydov. *International Roadmap for Devices and Systems, 2023 Edition —
-Metrology.* IEEE / NIST, 2023.
-→ <https://www.nist.gov/publications/international-roadmap-devices-and-systemstm-2023-edition-metrology>
-
-<a id="ref3"></a>
-**[3]** V. Constantoudis, G. P. Patsis, L. H. A. Leunissen, E. Gogolides.
-*Line edge roughness and critical dimension variation: fractal
-characterization and comparison using model functions.* Journal of Vacuum
-Science & Technology B **22**(4), 1974–1981, 2004.
-→ <https://doi.org/10.1116/1.1776561>
-
-<a id="ref4"></a>
-**[4]** C. A. Cutler *et al.* *Pattern roughness analysis using power
-spectral density: application and impact.* Journal of Micro/Nanopatterning,
-Materials and Metrology **20**(1), 010901, 2021.
-→ <https://doi.org/10.1117/1.JMM.20.1.010901>
-
-<a id="ref5"></a>
-**[5]** C. A. Mack. *Measuring Line Edge Roughness: Fluctuations in
-Uncertainty.* Lithography Tutor 62, 2008.
-→ <http://www.lithoguru.com/scientist/litho_tutor/Tutor62%20(Aug%2008).pdf>
-
-<a id="ref6"></a>
-**[6]** T. Tanaka, M. Morigami, N. Atoda. *Mechanism of resist pattern
-collapse during development process.* Japanese Journal of Applied Physics
-**32**, 6059–6064, 1993.
-
-<a id="ref7"></a>
-**[7]** C. A. Mack. *Pattern Collapse.* Lithography Tutor 55, 2006.
-→ <https://www.lithoguru.com/scientist/litho_tutor/Tutor55%20(Nov%2006).pdf>
-
-<a id="ref8"></a>
-**[8]** J. I. Goldstein, D. E. Newbury, J. R. Michael, N. W. M. Ritchie,
-J. H. J. Scott, D. C. Joy. *Scanning Electron Microscopy and X-Ray
-Microanalysis*, 4th edition. Springer, 2018. ISBN 978-1-4939-6674-5.
-→ <https://doi.org/10.1007/978-1-4939-6676-9>
-
-<a id="ref9"></a>
-**[9]** N. G. Orji, M. Badaroglu, B. M. Barnes, C. Beitia, B. D. Bunday,
-U. Celano, R. J. Kline, M. Neisser, Y. Obeng, A. E. Vladár. *Metrology for
-the next generation of semiconductor devices.* Nature Electronics **1**,
-532–547, 2018.
-→ <https://doi.org/10.1038/s41928-018-0150-9>
-
-<a id="ref10"></a>
-**[10]** J. S. Villarrubia, N. W. M. Ritchie, J. R. Lowney. *Monte Carlo
-modeling of secondary electron imaging in three dimensions.* Proc. SPIE
-**6518**, 65180K, 2007.
-→ <https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=913838>
-
-<a id="ref11"></a>
-**[11]** Y. G. Li, S. F. Mao, Z. J. Ding *et al.* *Monte Carlo simulation
-of CD-SEM images for linewidth and critical dimension metrology.* Scanning
-**35**(2), 127–139, 2013.
-→ <https://doi.org/10.1002/sca.21042>
-
-<a id="ref12"></a>
-**[12]** P. Cizmar, A. E. Vladár, M. T. Postek. *Real-time scanning
-charged-particle microscope image composition with correction of drift.*
-Microscopy and Microanalysis **17**(2), 302–308, 2011.
-→ <https://doi.org/10.1017/S1431927610094250>
-
-<a id="ref13"></a>
-**[13]** H. Jin *et al.* *Correction of image drift and distortion in a
-scanning electron microscopy.* Journal of Microscopy **260**(3), 268–280,
-2015.
-→ <https://doi.org/10.1111/jmi.12293>
-
-<a id="ref14"></a>
-**[14]** A. Foi, M. Trimeche, V. Katkovnik, K. Egiazarian. *Practical
-Poissonian-Gaussian noise modeling and fitting for single-image raw-data.*
-IEEE Transactions on Image Processing **17**(10), 1737–1754, 2008.
-→ <https://doi.org/10.1109/TIP.2008.2001399>
-
-<a id="ref15"></a>
-**[15]** B. Keeth (Micron Technology). *Digit line architecture for dynamic
-memory.* US Patent 6,504,255, 2003.
-→ <https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6504255>
-
-<a id="ref16"></a>
-**[16]** V. Seshadri, O. Mutlu. *In-DRAM bulk bitwise execution engine.*
-arXiv:1905.09822, 2019 — §2.2, DRAM mat and open-bitline architecture.
-→ <https://arxiv.org/abs/1905.09822>
-
-<a id="ref17"></a>
-**[17]** C. A. Mack. *Optical Proximity Effects, Part 2.* Lithography
-Tutor 14, 1996.
-→ <http://www.lithoguru.com/scientist/litho_tutor/TUTOR14%20(Summer%2096).pdf>
-
-<a id="ref18"></a>
-**[18]** J. Cazaux. *Some considerations on the secondary electron
-emission, δ, from e⁻ irradiated insulators.* Journal of Applied Physics
-**85**(2), 1137–1147, 1999.
-→ <https://doi.org/10.1063/1.369239>
+| # | Reference | Link |
+|:--|:--|:--|
+| **1** | IEEE. *International Roadmap for Devices and Systems (IRDS™), 2023 Edition — More Moore.* IEEE, 2023. | [open](https://irds.ieee.org/editions/2023) |
+| **2** | E. Mansfield, B. Barnes, R. J. Kline, A. E. Vladár, Y. S. Obeng, A. Davydov. *International Roadmap for Devices and Systems, 2023 Edition — Metrology.* IEEE / NIST, 2023. | [open](https://www.nist.gov/publications/international-roadmap-devices-and-systemstm-2023-edition-metrology) |
+| **3** | V. Constantoudis, G. P. Patsis, L. H. A. Leunissen, E. Gogolides. *Line edge roughness and critical dimension variation: fractal characterization and comparison using model functions.* Journal of Vacuum Science & Technology B **22**(4), 1974–1981, 2004. | [open](https://doi.org/10.1116/1.1776561) |
+| **4** | C. A. Cutler *et al.* *Pattern roughness analysis using power spectral density: application and impact.* Journal of Micro/Nanopatterning, Materials and Metrology **20**(1), 010901, 2021. | [open](https://doi.org/10.1117/1.JMM.20.1.010901) |
+| **5** | C. A. Mack. *Measuring Line Edge Roughness: Fluctuations in Uncertainty.* Lithography Tutor 62, 2008. | [open](http://www.lithoguru.com/scientist/litho_tutor/Tutor62%20(Aug%2008).pdf) |
+| **6** | T. Tanaka, M. Morigami, N. Atoda. *Mechanism of resist pattern collapse during development process.* Japanese Journal of Applied Physics **32**, 6059–6064, 1993. | — |
+| **7** | C. A. Mack. *Pattern Collapse.* Lithography Tutor 55, 2006. | [open](https://www.lithoguru.com/scientist/litho_tutor/Tutor55%20(Nov%2006).pdf) |
+| **8** | J. I. Goldstein, D. E. Newbury, J. R. Michael, N. W. M. Ritchie, J. H. J. Scott, D. C. Joy. *Scanning Electron Microscopy and X-Ray Microanalysis*, 4th edition. Springer, 2018. ISBN 978-1-4939-6674-5. | [open](https://doi.org/10.1007/978-1-4939-6676-9) |
+| **9** | N. G. Orji, M. Badaroglu, B. M. Barnes, C. Beitia, B. D. Bunday, U. Celano, R. J. Kline, M. Neisser, Y. Obeng, A. E. Vladár. *Metrology for the next generation of semiconductor devices.* Nature Electronics **1**, 532–547, 2018. | [open](https://doi.org/10.1038/s41928-018-0150-9) |
+| **10** | J. S. Villarrubia, N. W. M. Ritchie, J. R. Lowney. *Monte Carlo modeling of secondary electron imaging in three dimensions.* Proc. SPIE **6518**, 65180K, 2007. | [open](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=913838) |
+| **11** | Y. G. Li, S. F. Mao, Z. J. Ding *et al.* *Monte Carlo simulation of CD-SEM images for linewidth and critical dimension metrology.* Scanning **35**(2), 127–139, 2013. | [open](https://doi.org/10.1002/sca.21042) |
+| **12** | P. Cizmar, A. E. Vladár, M. T. Postek. *Real-time scanning charged-particle microscope image composition with correction of drift.* Microscopy and Microanalysis **17**(2), 302–308, 2011. | [open](https://doi.org/10.1017/S1431927610094250) |
+| **13** | H. Jin *et al.* *Correction of image drift and distortion in a scanning electron microscopy.* Journal of Microscopy **260**(3), 268–280, 2015. | [open](https://doi.org/10.1111/jmi.12293) |
+| **14** | A. Foi, M. Trimeche, V. Katkovnik, K. Egiazarian. *Practical Poissonian-Gaussian noise modeling and fitting for single-image raw-data.* IEEE Transactions on Image Processing **17**(10), 1737–1754, 2008. | [open](https://doi.org/10.1109/TIP.2008.2001399) |
+| **15** | B. Keeth (Micron Technology). *Digit line architecture for dynamic memory.* US Patent 6,504,255, 2003. | [open](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6504255) |
+| **16** | V. Seshadri, O. Mutlu. *In-DRAM bulk bitwise execution engine.* arXiv:1905.09822, 2019 — §2.2, DRAM mat and open-bitline architecture. | [open](https://arxiv.org/abs/1905.09822) |
+| **17** | C. A. Mack. *Optical Proximity Effects, Part 2.* Lithography Tutor 14, 1996. | [open](http://www.lithoguru.com/scientist/litho_tutor/TUTOR14%20(Summer%2096).pdf) |
+| **18** | J. Cazaux. *Some considerations on the secondary electron emission, δ, from e⁻ irradiated insulators.* Journal of Applied Physics **85**(2), 1137–1147, 1999. | [open](https://doi.org/10.1063/1.369239) |
 
 ---
-
 <div align="center">
 
 **Eighteen references. Every link verified against its publisher.**
