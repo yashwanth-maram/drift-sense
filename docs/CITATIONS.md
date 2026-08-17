@@ -2,25 +2,34 @@
 
 # Citations
 
-**Drift-Sense** — Navigation-Error Recovery for Wafer Inspection
-SEMICON India Hackathon 2026 · Problem Statement 2 · Applied Materials
+### Every parameter, and why it has that value.
 
-*Every structural parameter, noise model and augmentation used by the
-dataset generator, with its value, its physical justification, and the
-public sources that support it.*
+**Drift-Sense** · Team Lattice
+SEMICON India Hackathon 2026 — Problem Statement 2
+
+<br>
+
+![refs](https://img.shields.io/badge/references-18-2f81f7?style=for-the-badge&labelColor=0d1117)
+![params](https://img.shields.io/badge/parameters%20cited-all-3fb950?style=for-the-badge&labelColor=0d1117)
+![fab](https://img.shields.io/badge/proprietary%20fab%20data-none-8b949e?style=for-the-badge&labelColor=0d1117)
 
 </div>
 
 ---
 
-> **Scope.** Only publicly known structural characteristics are used. No
-> proprietary fab data of any kind.
+> [!IMPORTANT]
+> Applied Materials require every augmentation, noise and distortion choice
+> to be justified against **at least two to three credible public sources**
+> — papers, textbooks or patents on semiconductor device structure or SEM
+> imaging. Unjustified choices do not receive full marks on the 30 %
+> augmentation score.
 >
-> **Requirement.** Applied Materials require every augmentation, noise and
-> distortion choice to be justified against at least two to three credible
-> public sources — papers, textbooks or patents on semiconductor device
-> structure or SEM imaging. This document is that record, and it
-> corresponds one-to-one with slide 9 of the presentation.
+> This document is that record, and it corresponds one-to-one with slide 9
+> of the presentation.
+
+> [!NOTE]
+> Only publicly known structural characteristics are used. **No proprietary
+> fab data of any kind.**
 
 ---
 
@@ -140,9 +149,10 @@ Roughness is therefore generated as smoothed Gaussian noise along each
 line, with the smoothing kernel setting `ξ`. White noise would be
 physically wrong and visually obvious.
 
-> The reference generator supplied with the problem statement omits
-> line-edge roughness entirely. Perfectly straight edges are the single
-> most recognisable tell of a synthetic SEM image.
+> [!TIP]
+> **The reference generator omits line-edge roughness entirely.** Perfectly
+> straight edges are the single most recognisable tell of a synthetic SEM
+> image.
 
 **Sources** — **[3]** Constantoudis *et al.* (2004) ·
 **[4]** Cutler *et al.* (2021) · **[5]** Mack, *Measuring
@@ -241,6 +251,7 @@ signature that makes an SEM image recognisable. **[8]**
 Implemented as a gradient-magnitude term softened to the escape depth of
 secondary electrons.
 
+> [!TIP]
 > The problem statement lists edge-brightening as **mandatory**. The
 > reference generator does not implement it.
 
@@ -426,10 +437,11 @@ move the crop position.
 Two runs differing only in noise level therefore remain comparable sample
 by sample, which is what makes a paired ablation statistically efficient.
 
-> The reference generator shares one RNG stream across its whole loop, so
-> changing `--shear-amplitude-px` desynchronises every sample after the
+> [!WARNING]
+> The reference generator shares **one RNG stream across its whole loop**,
+> so changing `--shear-amplitude-px` desynchronises every sample after the
 > first. This was observed directly, and it silently breaks paired
-> comparison.
+> comparison — the property that makes an ablation statistically efficient.
 
 ---
 
@@ -463,7 +475,8 @@ by sample, which is what makes a paired ablation statistically efficient.
 
 **Eighteen references. Every link verified against its publisher.**
 
-*Every parameter in the generator now meets the two-to-three source
-requirement.*
+*Every parameter in the generator meets the two-to-three source requirement.*
+
+**Team Lattice**
 
 </div>

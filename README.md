@@ -25,6 +25,17 @@ Problem Statement 2 — Applied Materials
 
 </div>
 
+```bash
+pip install -r requirements.txt
+python generate_dataset.py --style DRAM --n 5 --out ./data
+python localize.py --reference ./data/reference/00000.png --search ./data/search/00000.png
+```
+
+> [!TIP]
+> That prints one line — `746.60,318.80` — the centre of the matched region
+> in search-image pixels. Nothing else to configure, no weights to download.
+> [Full setup and all flags ↓](#quick-start)
+
 ---
 
 ## Contents
