@@ -276,6 +276,20 @@ cd drift-sense
 pip install -r requirements.txt
 ```
 
+> [!NOTE]
+> `requirements.txt` lists what the project needs — `numpy` and
+> `opencv-python` for the two scored scripts, plus `matplotlib` and
+> `scikit-learn` for the experiments.
+>
+> A complete `pip freeze` of the development environment is in
+> [`requirements-freeze.txt`](requirements-freeze.txt), as required by
+> submission item 6. That environment is shared with unrelated projects,
+> so installing from it is neither necessary nor advisable.
+>
+> Verified end to end on **Windows / Python 3.12.10 / numpy 2.2.5 /
+> cv2 5.0.0** and **Linux / Python 3.12.3 / numpy 2.4.4 / cv2 4.13.0**,
+> with identical results.
+
 **Generate data**
 
 ```bash
