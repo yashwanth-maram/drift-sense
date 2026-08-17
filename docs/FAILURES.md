@@ -131,13 +131,14 @@ it.
 
 | | median margin | true site wins |
 |:--|--:|--:|
-| Plain ZNCC | −0.0393 | 40 / 100 |
-| Max over resamplings | **+0.0155** | **74 / 100** |
+| Plain ZNCC | +0.0213 | 76 / 100 |
+| Max over resamplings | **+0.0265** | **98 / 100** |
 
 > [!TIP]
-> The margin between the true site and its best competitor **changes
-> sign**. That single measurement is the whole justification for the
-> method.
+> **22 of the 24 cases where the true site was losing become wins** — 76 of
+> 100 under plain matching, 98 of 100 with the resampling family. That
+> figure maps one-to-one onto the 98.0 % accuracy, and it is the whole
+> justification for the method.
 
 ---
 
@@ -241,15 +242,22 @@ Every failure sits in the bottom fifth.
 <img src="../figures/06_noise.png" width="700">
 </div>
 
-DRAM, n = 40 per level:
+DRAM, n = 30 per level — the run plotted above:
 
-| Level | Accuracy @ 5 px | AP | Both pinned | One | Neither |
-|:--|--:|--:|--:|--:|--:|
-| low | 100.0 % | 1.000 | 100 % | 100 % | 100 % |
-| medium | 96.7 % | 0.874 | 100 % | 100 % | 90 % |
-| high | 68.3 % | 0.576 | 100 % | 88 % | 15 % |
-| severe | 51.7 % | 0.308 | 96 % | 53 % | 0 % |
-| extreme | 17.5 % | 0.149 | 47 % | 0 % | 0 % |
+| Level | Accuracy @ 5 px |
+|:--|--:|
+| low | 100 % |
+| medium | 97 % |
+| high | 63 % |
+| severe | 47 % |
+| extreme | 33 % |
+
+A separate n = 60 sweep, used to select the low-pass width, gives the same
+shape with slightly different values — 100 / 96.7 / 68.3 / 51.7 %. The
+difference is sampling, not method.
+
+Accuracy by reference condition degrades in the same pattern at every
+level: strip-pinned references hold up, strip-free ones fail first.
 
 Two things are worth reading from this.
 

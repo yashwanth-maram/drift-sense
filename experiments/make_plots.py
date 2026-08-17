@@ -267,7 +267,7 @@ def fig_margin(res, out):
     a2.legend(frameon=False, loc="upper right")
 
     fig.suptitle("The mechanism: taking the maximum over a resampling "
-                 "family flips the margin",
+                 "family widens the margin",
                  x=0.012, ha="left", fontsize=13, fontweight="bold",
                  color=FG, y=1.04)
     fig.tight_layout()

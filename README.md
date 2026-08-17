@@ -151,8 +151,13 @@ flowchart LR
 <img src="figures/04_margin.png" width="820">
 </div>
 
-The margin between the true site and its best competitor **changes sign**.
-That is the whole method.
+| | median margin | true site wins |
+|:--|--:|--:|
+| Plain ZNCC | +0.0213 | 76 / 100 |
+| **Max over resamplings** | **+0.0265** | **98 / 100** |
+
+**22 of the 24 cases where the true site was losing become wins** — which is
+exactly the accuracy gain. That is the whole method.
 
 <details>
 <summary><b>Two implementation details that decide whether it works</b></summary>
@@ -173,7 +178,7 @@ exposed at high dose and then averaged tenfold, cutting its noise by
 another factor of ten, so the template is far sharper than anything the
 search image can carry. A mild low-pass brings the two into agreement.
 
-Accuracy at 5 px, across noise levels:
+Accuracy at 5 px across noise levels, n = 60 per cell:
 
 | σ | AM data | low | medium | high | severe |
 |--:|--:|--:|--:|--:|--:|
@@ -297,10 +302,10 @@ python generate_dataset.py --style DRAM   --n 30 --out ./data
 python generate_dataset.py --style FinFET --n 30 --out ./data_ff --noise severe
 ```
 
-**Localise**
+**Localise a single pair**
 
 ```bash
-python localize.py --reference ref.png --search search.png
+python localize.py --reference ./data/reference/00000.png --search ./data/search/00000.png
 ```
 
 ```
@@ -309,6 +314,17 @@ python localize.py --reference ref.png --search search.png
 
 One line on stdout: the centre in search-image pixels. Diagnostics go to
 stderr, so the output stays clean for an automated harness.
+
+**Or a whole directory at once**
+
+```bash
+python localize.py --batch ./data
+python localize.py --batch ./data --out results.csv
+```
+
+Finds `reference/` and `search/` anywhere under the given path, pairs them
+by filename, and reports accuracy against `manifest.csv` when one is
+present. Progress goes to stderr, results to stdout.
 
 <details>
 <summary><b>All flags</b></summary>
