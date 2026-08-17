@@ -1,7 +1,10 @@
-# Generated data — regenerable from the manifest, not committed
+# Generated datasets — regenerable from the manifest, never committed
 data/
 data_*/
 out_*/
+am_eval/
+shear_*/
+inspect*/
 
 # Metrics output
 metrics_*.json
@@ -10,7 +13,10 @@ metrics_*.json
 __pycache__/
 *.pyc
 *.pyo
+*.egg-info/
+.venv/
+venv/
 
 # NOTE: figures/ is deliberately NOT ignored.
-# docs/FAILURES.md embeds ../figures/failure_00049.png and it must
+# README.md and docs/FAILURES.md embed images from it, and they must
 # render on GitHub.
