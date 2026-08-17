@@ -276,8 +276,8 @@ results, in **[`docs/FAILURES.md`](docs/FAILURES.md)**.
 ## Quick start
 
 ```bash
-git clone https://github.com/yashwanth-maram/drift-sense.git
-cd drift-sense
+git clone https://github.com/yashwanth-maram/Lattice_PS02.git
+cd Lattice_PS02
 pip install -r requirements.txt
 ```
 
